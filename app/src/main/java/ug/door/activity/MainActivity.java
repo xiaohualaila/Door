@@ -77,7 +77,29 @@ public class MainActivity extends BaseAppCompatActivity {
         UtilToast.showToast(this, "请打开权限！");
     }
 
-
-
-
+//数据库更新
+//    private void updateItem(Long id) {
+//        MessageDb message = GreenDaoManager.getInstance().getSession().getMessageDbDao().queryBuilder()
+//                .where(MessageDbDao.Properties.Id.eq(id)).build().unique();
+//        if (message != null) {
+//            message.setIsRead(true);
+//            GreenDaoManager.getInstance().getSession().getMessageDbDao().update(message);
+//            getMessageList();
+//        } else {
+//            getMessageList();
+//        }
+//    }
+//查询
+//    private void getMessageList() {
+//        list = GreenDaoManager.getInstance().getSession().getMessageDbDao().
+//                queryBuilder().orderDesc(MessageDbDao.Properties.Time).list();//按照时间排列
+//        notifyDataSetChanged();
+//    }
+//数据库保存
+//    private void insertUser(MessageDb message) {
+//        MessageDbDao messageDao = GreenDaoManager.getInstance().getSession().getMessageDbDao();
+//        messageDao.save(message);
+//
+//
+//    }
 }
