@@ -50,12 +50,11 @@ public class VideoActivity extends BaseAppCompatActivity implements VideoAdapter
     @Bind(R.id.list_pullRecycler)
     PullLoadMoreRecyclerView mListPullRecycler;
     private VideoAdapter videoAdapter;
-    private int page = 1;
 
     @Override
     protected void init() {
-        initPullRecycler();
         tv_title.setText("广告下载");
+        initPullRecycler();
     }
 
     @Override
@@ -74,34 +73,24 @@ public class VideoActivity extends BaseAppCompatActivity implements VideoAdapter
             @Override
             public void onRefresh() {
                 //下拉
-                page = 1;
                 videoAdapter.clearData();
                 getData();
             }
 
             @Override
             public void onLoadMore() {
-                //上拉
-                page = page + 1;
-                getData();
+
             }
         });
         videoAdapter.setOnDownFile(this);
-
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        videoAdapter.clearData();
-        getData();
     }
 
     private void getData() {
-        Api.getBaseApi(ConnectUrl.BASE_URL)
+        Api.getBaseApi(ConnectUrl.VIDEO_URL)
                 .videosList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<JSONObject>() {
+                .subscribe(new Observer<Videos>() {
                     @Override
                     public void onCompleted() {
 
@@ -113,12 +102,14 @@ public class VideoActivity extends BaseAppCompatActivity implements VideoAdapter
                     }
 
                     @Override
-                    public void onNext(JSONObject jsonObject) {
+                    public void onNext(Videos videos) {
+                   //     Log.i("sss",jsonObject.toString());
+
                         try {
-//                            if (disputes.getResult().isSuccess()) {
-//                                videoAdapter.addAllData(disputes.getFocusEventList());
-//                                mListPullRecycler.setPullLoadMoreCompleted();
-//                            }
+                            if (videos.getResult().isSuccess()) {
+                                videoAdapter.addAllData(videos.getUrl());
+                                mListPullRecycler.setPullLoadMoreCompleted();
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -134,6 +125,7 @@ public class VideoActivity extends BaseAppCompatActivity implements VideoAdapter
         up.setOnDownSuccess(new UpdateApp.OnDownSuccess() {
             @Override
             public void onDownSuccess() {
+                videoAdapter.clearData();
                 getData();
             }
         });
@@ -145,7 +137,6 @@ public class VideoActivity extends BaseAppCompatActivity implements VideoAdapter
             case R.id.btn_back:
                 finish();
                 break;
-
         }
     }
 

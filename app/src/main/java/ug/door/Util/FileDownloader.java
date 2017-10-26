@@ -59,16 +59,13 @@ public class FileDownloader {
      */
     public void down2sd(String filename, DownloadHandler handler)
     {
-        StringBuilder sb = new StringBuilder(sdcard);
         File file = new File(sdcard);
         if (!file.exists()) {
             file.mkdirs();
             //创建文件夹
-            Log.d("log", sb.toString());
         }
         //获取文件全名
-        sb.append(filename);
-        file = new File(sb.toString());
+        file = new File(sdcard + File.separator + filename);
         System.out.println("----------------" + file.getAbsolutePath());
         FileOutputStream fos = null;
         try {

@@ -32,6 +32,7 @@ import ug.door.Util.UtilToast;
 import ug.door.activity.base.BaseAppCompatActivity;
 import ug.door.activity.choose.ChooseActivity;
 import ug.door.activity.video.VideoActivity;
+import ug.door.activity.video.VideoLocalActivity;
 import ug.door.model.CountryModel;
 import ug.door.retrofit.Api;
 import ug.door.view.ClearEditTextWhite;
@@ -110,7 +111,7 @@ public class SetUpActivity extends BaseAppCompatActivity {
                 startActivity(new Intent(this, VideoActivity.class));
                 break;
             case R.id.local_video:
-             //   startActivity(new Intent(this, ChooseActivity.class));
+                startActivity(new Intent(this, VideoLocalActivity.class));
                 break;
         }
     }

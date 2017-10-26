@@ -12,5 +12,5 @@
     <color name="background">#c8e8f1</color>
     <color name="switch_on">#05a1f5</color>
     <color name="switch_off">#979898</color>
-    <color name="view_line">#979898</color>
+    <color name="view_line">#c9caca</color>
 </resources>

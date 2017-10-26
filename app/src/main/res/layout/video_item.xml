@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <ImageView
+    <ug.door.view.RoundImageView
         android:id="@+id/img"
         android:layout_margin="5dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp" />
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
     <TextView
         android:id="@+id/video_name"
         android:layout_width="wrap_content"
@@ -19,13 +22,17 @@
         android:id="@+id/video_down_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_pressed_blue"
+        android:background="@drawable/btn_pressed_circular"
         android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
         android:text="下载"/>
     <View
         android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_height="0.5dp"
         android:background="@color/view_line"/>
 </RelativeLayout>

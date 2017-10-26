@@ -40,13 +40,17 @@ public class MainActivity extends BaseAppCompatActivity {
 //                e.printStackTrace();
 //            }
 //        }
-        permiss();
+       // permiss();
         //测试播放路径
-//        String path = FileUtil.getPath();
-//        List<String> ss = FileUtil.getPaths(path);
-//        for (int i=0;i<ss.size();i++){
-//            Log.i("sss",ss.get(i));
-//        }
+        String path = FileUtil.getPath();
+        List<String> ss = FileUtil.getPaths(path);
+        for (int i=0;i<ss.size();i++){
+           String s =  ss.get(i);
+            Log.i("sss",ss.get(i));
+            int index = s.lastIndexOf("/");
+            s = s.substring(index+1,s.length());
+            Log.i("sss",s);
+        }
     }
 
     @Override
